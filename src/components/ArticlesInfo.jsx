@@ -5,10 +5,13 @@ import Image from "next/image";
 
 const ArticlesInfo = ({ id }) => {
     const { articles, loading, error } = useArticles();
+
+    const decodedId = decodeURIComponent(id);
+
     const article = articles.find(
-        (item) => String(item.id) === String(id)
+        (item) => String(item.title) === String(decodedId)
     );
-  
+    
     if (loading) return (
         <div className="h-[80vh] flex items-center justify-center">
         <p className="text-2xl font-semibold">Loading...</p>
