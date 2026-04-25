@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 
 export default function ArticleCards({ article }) {
   return (
@@ -11,21 +9,6 @@ export default function ArticleCards({ article }) {
 
       <div className="text-sm text-gray-600 mt-2 line-clamp-3">
         {article.description || "A detailed exploration of modern rendering techniques and performance considerations."}
-      </div>
-
-      <div className="flex items-center justify-between mt-4">
-        
-        <Link
-          href={`/articles/${article.id}`}
-          className="text-sm font-medium text-black hover:underline"
-        >
-          Read more →
-        </Link>
-
-        <span className="text-xs bg-gray-100 px-2 py-1 rounded">
-          Web
-        </span>
-
       </div>
       
     </div>

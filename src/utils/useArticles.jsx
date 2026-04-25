@@ -1,16 +1,21 @@
+'use client'
+
+import axios from "axios";
 import { useEffect, useState } from "react";
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function useArticles() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  
   useEffect(() => {
-    async function fetchArticles() {
+    const fetchArticles = async() => {
       try {
-        const res = await fetch("http://localhost:3001/articles"); // backend API
-        const data = await res.json();
-        setArticles(data);
+        const res = await axios.get(`${BASE_URL}/anime-news`); 
+        setArticles(res?.data?.articles);
+        
       } catch (err) {
         setError("Failed to load articles");
       } finally {
